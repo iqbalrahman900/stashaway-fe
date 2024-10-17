@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3 class="modal-title">Create Portfolio</h3>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="portfolioForm" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="name">Portfolio Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name" />
+        <div *ngIf="portfolioForm.get('name')?.invalid && (portfolioForm.get('name')?.touched || portfolioForm.get('name')?.dirty)">
+          <small class="text-danger" *ngIf="portfolioForm.get('name')?.errors?.required">Name is required.</small>
+        </div>
+      </div>
+      
+      <!-- The Balance input field is now removed -->
+  
+      <button type="submit" class="btn btn-primary" [disabled]="portfolioForm.invalid">Create Portfolio</button>
+    </form>
+  </div>
+  
